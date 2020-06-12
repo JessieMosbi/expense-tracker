@@ -49,10 +49,10 @@
         </div>
         {{!-- 按鈕 --}}
         <div class="col-6 d-flex align-items-center">
-          <form action="/records/edit/1">
+          <form action="/records/edit/{{this.id}}">
             <button type="submit" class="btn btn-info mr-2">修改</button>
           </form>
-          <form action="/records/1" method="POST">
+          <form action="/records/{{this.id}}?_method=DELETE" method="POST">
             <button type="submit" class="btn btn-warning">刪除</button>
           </form>
         </div>

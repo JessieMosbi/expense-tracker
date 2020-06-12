@@ -6,7 +6,10 @@ if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const express = require('express')
 const app = express()
 const routes = require('./routes/index.js')
+
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 // DB
 require('./config/mongoose.js')
@@ -14,6 +17,8 @@ require('./config/mongoose.js')
 // web server setting
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 // route
 app.use(routes)

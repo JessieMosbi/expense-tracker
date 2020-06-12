@@ -2,10 +2,11 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/new', (req, res) => {
-  res.render('edit')
+  res.render('edit', { action: '/records/new' })
 })
 
 router.post('/new', (req, res) => {
+  console.log(req.body)
   res.send('add record feat')
 })
 
