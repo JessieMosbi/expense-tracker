@@ -4,11 +4,10 @@ const port = 3000
 // include modules and files
 const express = require('express')
 const app = express()
+const routes = require('./routes/index.js')
 
 // route
-app.get('/', (req, res) => {
-  res.send('Hello')
-})
+app.use(routes)
 
 // start web server
 app.listen(port, () => {
