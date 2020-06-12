@@ -17,7 +17,7 @@ router.post('/register', (req, res) => {
   res.send('User register feat')
 })
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   res.send('User logout feat')
 })
 
