@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/new', (req, res) => {
-  res.send('add record page')
+  res.render('edit')
 })
 
 router.post('/new', (req, res) => {
@@ -10,7 +10,7 @@ router.post('/new', (req, res) => {
 })
 
 router.get('/edit/:id', (req, res) => {
-  res.send('edit record page')
+  res.render('edit')
 })
 
 router.put('/edit/:id', (req, res) => {

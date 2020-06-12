@@ -6,9 +6,14 @@ if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const express = require('express')
 const app = express()
 const routes = require('./routes/index.js')
+const exphbs = require('express-handlebars')
 
 // DB
 require('./config/mongoose.js')
+
+// web server setting
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.set('view engine', 'hbs')
 
 // route
 app.use(routes)
