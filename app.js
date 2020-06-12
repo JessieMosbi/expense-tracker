@@ -6,6 +6,9 @@ const express = require('express')
 const app = express()
 const routes = require('./routes/index.js')
 
+// DB
+require('./config/mongoose.js')
+
 // route
 app.use(routes)
 
