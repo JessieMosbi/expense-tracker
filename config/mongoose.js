@@ -1,5 +1,5 @@
 // params
-const MONGODB_URL = 'mongodb://127.0.0.1/expense-tracker'
+const MONGODB_URL = process.env.MONGODB_URI || 'mongodb://127.0.0.1/expense-tracker'
 
 // include modules and files
 const mongoose = require('mongoose')
