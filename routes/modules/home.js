@@ -34,9 +34,6 @@ const Record = require('../../models/record.js')
 
 const { dateFormat } = require('../../config/lib.js')
 
-// test
-const userId = '5e6cc60b2c086ac4ff1d13b6'
-
 router.get('/', (req, res) => {
   // params
   let totalAmount = 0
@@ -48,7 +45,7 @@ router.get('/', (req, res) => {
   for (let i = 1; i <= 12; i++) {
     months.push({ id: i, name: `${i} 月份` })
   }
-  const recordFindCond = { userId }
+  const recordFindCond = { userId: req.user._id }
 
   let selCategory = req.query.category
   if (selCategory && selCategory !== 'all') recordFindCond.categoryId = selCategory

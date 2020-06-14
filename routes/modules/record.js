@@ -9,9 +9,6 @@ router.get('/new', (req, res) => {
   res.render('edit', generateTemplateParams('add'))
 })
 
-// test
-const userId = '5e6cc60b2c086ac4ff1d13b6'
-
 router.post('/new', (req, res) => {
   const errors = []
   const { name, date, category, amount, merchant } = req.body
@@ -25,7 +22,7 @@ router.post('/new', (req, res) => {
   }
 
   Record.create({
-    name, date, amount, userId, categoryId: category, merchant
+    name, date, amount, userId: req.user._id, categoryId: category, merchant
   })
     .then(() => res.redirect('/'))
     .catch(err => console.log(err))
@@ -69,7 +66,7 @@ router.put('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-  return Record.findOne({ _id: req.params.id, userId })
+  return Record.findOne({ _id: req.params.id, userId: req.user._id })
     .then(record => record.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
