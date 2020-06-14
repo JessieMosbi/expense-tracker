@@ -70,7 +70,10 @@ router.put('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-  res.send('delete record feat')
+  return Record.findOne({ _id: req.params.id, userId })
+    .then(record => record.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 module.exports = router
