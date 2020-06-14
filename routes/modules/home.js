@@ -61,8 +61,6 @@ router.get('/', (req, res) => {
     recordFindCond.date = { $gte: `${thisYear}-${selMonth}-1`, $lte: `${thisYear}-${selMonth}-31` }
   } else selMonth = 'all'
 
-  console.log(recordFindCond)
-
   // TODO: 看 mongoose 有沒有 sum
   Record.find(recordFindCond)
     .lean()

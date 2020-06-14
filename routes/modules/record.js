@@ -20,7 +20,6 @@ router.post('/new', (req, res) => {
   if (isNaN(Number(amount)) || Number(amount) < 0) errors.push({ message: '金額請輸入整數' })
 
   if (errors.length > 0) {
-    console.log(errors)
     res.render('edit', generateTemplateParams('add', req.body, errors))
     return false
   }
