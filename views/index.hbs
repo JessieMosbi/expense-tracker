@@ -3,11 +3,16 @@
   <div class="col-3"></div>
   <div class="col-4">
     <form action="/" class="form-inline d-flex justify-content-around">
-      <select class="form-control" id="month" name="month">
-        <option>[月份]</option>
+      <select class="form-control" id="month" name="month" onchange="this.form.submit()">
+        {{#each months}}
+          <option value="{{this.id}}" {{#ifSelected this.id ../selMonth}}{{/ifSelected}}>{{this.name}}</option>
+        {{/each}}
       </select>
-      <select class="form-control" id="category" name="category">
-        <option>[類別]</option>
+      <select class="form-control" id="category" name="category" onchange="this.form.submit()">
+        {{#each categories}}
+          <option value="{{this.id}}" {{#ifSelected this.id ../selCategory}}{{/ifSelected}}>
+            {{this.name}}</option>
+        {{/each}}
       </select>
     </form>
   </div>
@@ -49,10 +54,10 @@
         </div>
         {{!-- 按鈕 --}}
         <div class="col-6 d-flex align-items-center">
-          <form action="/records/edit/{{this.id}}">
+          <form action="/records/edit/{{this._id}}">
             <button type="submit" class="btn btn-info mr-2">修改</button>
           </form>
-          <form action="/records/{{this.id}}?_method=DELETE" method="POST">
+          <form action="/records/{{this._id}}?_method=DELETE" method="POST">
             <button type="submit" class="btn btn-warning">刪除</button>
           </form>
         </div>
