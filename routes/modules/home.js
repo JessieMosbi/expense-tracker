@@ -1,31 +1,4 @@
-// TODO: 跟 record 重複了
-const categories = [
-  {
-    id: 1,
-    name: '家居物業',
-    icon: '<i class="fas fa-home"></i>'
-  },
-  {
-    id: 2,
-    name: '交通出行',
-    icon: '<i class="fas fa-shuttle-van"></i>'
-  },
-  {
-    id: 3,
-    name: '休閒娛樂',
-    icon: '<i class="fas fa-grin-beam"></i>'
-  },
-  {
-    id: 4,
-    name: '餐飲食品',
-    icon: '<i class="fas fa-utensils"></i>'
-  },
-  {
-    id: 5,
-    name: '其他',
-    icon: '<i class="fas fa-pen"></i>'
-  }
-]
+const { categories } = require('../../config/data.js')
 
 const express = require('express')
 const router = express.Router()
@@ -37,7 +10,6 @@ const { dateFormat } = require('../../config/lib.js')
 router.get('/', (req, res) => {
   // params
   let totalAmount = 0
-  // TODO: 為何會累加？
   const newCategories = [...categories]
   newCategories.push({ id: 'all', name: '所有類別' })
 
