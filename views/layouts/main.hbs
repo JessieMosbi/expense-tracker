@@ -14,8 +14,18 @@
   <header>
     <nav class="navbar navbar-dark bg-primary justify-content-between">
       <a class="navbar-brand" href="/">家庭記帳本</a>
-      <a href="/user/logout" class="btn btn-outline-light">登出</a>
-      <a href="/user/login" class="btn btn-outline-light">登入</a>
+      {{#if user}}
+        <span class="ml-auto mr-3">Hi, {{{user.name}}}</span>
+      {{/if}}
+      {{#if isAuthenticated}}
+        <form class="form-inline" action="/user/logout">
+          <button type="submit" class="btn btn-outline-light">Logout</button>
+        </form>
+      {{else}}
+        <form class="form-inline" action="/user/login">
+          <button type="submit" class="btn btn-outline-light">Login</button>
+        </form>
+      {{/if}}
     </nav>
   </header>
   <main>
