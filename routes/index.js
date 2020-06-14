@@ -5,11 +5,13 @@ const router = express.Router()
 const home = require('./modules/home.js')
 const user = require('./modules/user.js')
 const record = require('./modules/record.js')
+const auth = require('./modules/auth')
 
 const { authenticator } = require('../middleware/auth')
 
 // set routes
 router.use('/user', user)
+router.use('/auth', auth)
 router.use('/', authenticator, home)
 router.use('/records', authenticator, record)
 
