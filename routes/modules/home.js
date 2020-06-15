@@ -30,7 +30,13 @@ router.get('/', (req, res) => {
     recordFindCond.date = { $gte: `${thisYear}-${selMonth}-1`, $lte: `${thisYear}-${selMonth}-31` }
   } else selMonth = 'all'
 
-  // TODO: 看 mongoose 有沒有 sum
+  // Record.aggregate([
+  //   { $match: recordFindCond },
+  //   { $group: { _id: null, amount: { $sum: '$amount' } } }
+  // ])
+  //   .then(result => console.log(result))
+  //   .catch(error => console.error(error))
+
   Record.find(recordFindCond)
     .lean()
     .sort({ _id: 'DESC' })
